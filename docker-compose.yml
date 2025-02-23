@@ -1,0 +1,90 @@
+services:
+  noalbs:
+    image: moothecow/noalbs:${GLOBAL_VERSION}
+    container_name: noalbs
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./config.json:/noalbs/config.json
+      - ./env_noalbs:/noalbs/.env
+  srtla-live-server:
+    image: moothecow/srtla-live-server:${GLOBAL_VERSION}
+    container_name: srtla-live-server
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports: 
+      - "30001:30000/udp"
+      - "8283:8181/tcp"
+  srtla-receiver:
+    image: moothecow/srtla-receiver:${GLOBAL_VERSION}
+    container_name: srtla-receiver
+    restart: unless-stopped
+    ports:
+      - "5002:5000/udp"
+      - "5003:5001/udp"
+    environment:
+      - SRT_ENDPOINT_ADDR=srtla-live-server
+      - SRT_ENDPOINT_PORT=30000
+    depends_on:
+      - "srtla-live-server"
+  srt-live-server:
+    image: moothecow/srt-live-server:${GLOBAL_VERSION}
+    container_name: srt-live-server
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports: 
+      - "30002:30000/udp"
+      - "8284:8181/tcp"
+  srt-bonding-receiver:
+    image: moothecow/moo-srt:${GLOBAL_VERSION}
+    container_name: srt-bonding-receiver
+    restart: unless-stopped
+    ports:
+      - "5212:5500/udp"
+      - "5213:5565/udp"
+    tty: true
+    stdin_open: true
+    command: srt-test-live "udp://:5565" "srt://:5500?groupconnect=1&groupid=1"
+  srt-receiver:
+    image: moothecow/moo-srt:${GLOBAL_VERSION}
+    container_name: srt-receiver
+    restart: unless-stopped
+    ports:
+      - "5012:5000/udp"
+      - "5013:5001/udp"
+    tty: true
+    stdin_open: true
+    command: srt-live-transmit "udp://:5000" "srt://0.0.0.0:5001?mode=listener"
+    depends_on:
+      - "srtla-live-server"
+  moo-rist:
+    image: moothecow/moo-rist:${GLOBAL_VERSION}
+    container_name: moo-rist
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '2030:2030/udp'
+      - '2031:2031/udp'
+    command: ristreceiver -i 'rist://@moo-rist:2030?aes-type=128&rtt-min=100&secret=${STREAMKEY}' -o 'rist://moo-rist-forwarder:12345' -r 'moo-rist-logger:5005' -p 1
+  moo-rist-logger:
+    image: moothecow/moo-rist-logger:${GLOBAL_VERSION}
+    container_name: moo-rist-logger
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./logfile.json:/opt/moostream/logfile.json
+  moo-rist-stats:
+    image: moothecow/moo-rist-stats:${GLOBAL_VERSION}
+    container_name: moo-rist-stats
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '8681:8080'
+      - '8683:8081'
+    volumes:
+      - ./logfile.json:/opt/moostream/logfile.json
+    depends_on:
+      - "moo-rist-logger"
