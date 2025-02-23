@@ -6,7 +6,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./config.json:/noalbs/config.json
+      - ./config_noalbs.json:/noalbs/config.json
       - ./env_noalbs:/noalbs/.env
   srtla-live-server:
     image: moothecow/srtla-live-server:${GLOBAL_VERSION}
