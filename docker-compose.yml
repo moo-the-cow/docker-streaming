@@ -1,6 +1,6 @@
 services:
   noalbs:
-    image: moothecow/noalbs:${GLOBAL_VERSION}
+    image: moothecow/noalbs:0.0.8
     container_name: noalbs
     restart: unless-stopped
     stdin_open: true
