@@ -68,7 +68,7 @@ services:
     ports:
       - '2030:2030/udp'
       - '2031:2031/udp'
-    command: ristreceiver -i 'rist://@moo-rist:2030?aes-type=128&rtt-min=100&secret=${STREAMKEY}' -o 'udp://${OBS_IP}:12345' -r 'moo-rist-logger:5005' -p 1
+    command: ristreceiver -x -i 'rist://@moo-rist:2030?aes-type=128&rtt-min=100&secret=${STREAMKEY}' -o 'udp://${OBS_IP}:12345' -r 'moo-rist-logger:5005' -p 1
   moo-rist-logger:
     image: moothecow/moo-rist-logger:${GLOBAL_VERSION}
     container_name: moo-rist-logger
