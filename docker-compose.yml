@@ -4,6 +4,8 @@ services:
     container_name: noalbs
     restart: unless-stopped
     stdin_open: true
+    networks:
+      - moo-net
     tty: true
     volumes:
       - ./config_noalbs.json:/noalbs/config.json
@@ -13,6 +15,8 @@ services:
     container_name: srtla-live-server
     restart: unless-stopped
     stdin_open: true
+    networks:
+      - moo-net
     tty: true
     ports: 
       - "30001:30000/udp"
@@ -21,6 +25,8 @@ services:
     image: moothecow/srtla-receiver:${GLOBAL_VERSION}
     container_name: srtla-receiver
     restart: unless-stopped
+    networks:
+      - moo-net
     ports:
       - "5002:5000/udp"
       - "5003:5001/udp"
@@ -33,6 +39,8 @@ services:
     image: moothecow/srt-live-server:${GLOBAL_VERSION}
     container_name: srt-live-server
     restart: unless-stopped
+    networks:
+      - moo-net
     stdin_open: true
     tty: true
     ports: 
@@ -42,6 +50,8 @@ services:
     image: moothecow/moo-srt:${GLOBAL_VERSION}
     container_name: srt-bonding-receiver
     restart: unless-stopped
+    networks:
+      - moo-net
     ports:
       - "5212:5500/udp"
       - "5213:5565/udp"
@@ -57,6 +67,8 @@ services:
       - "5013:5001/udp"
     tty: true
     stdin_open: true
+    networks:
+      - moo-net
     command: srt-live-transmit "udp://:5000" "srt://0.0.0.0:5001?mode=listener"
     depends_on:
       - "srtla-live-server"
@@ -65,6 +77,8 @@ services:
     container_name: moo-rist
     restart: unless-stopped
     tty: true
+    networks:
+      - moo-net
     ports:
       - '2030:2030/udp'
       - '2031:2031/udp'
@@ -73,6 +87,8 @@ services:
     image: moothecow/moo-rist-logger:${GLOBAL_VERSION}
     container_name: moo-rist-logger
     restart: unless-stopped
+    networks:
+      - moo-net
     tty: true
     volumes:
       - ./logfile.json:/opt/moostream/logfile.json
@@ -81,6 +97,8 @@ services:
     container_name: moo-rist-stats
     restart: unless-stopped
     tty: true
+    networks:
+      - moo-net
     ports:
       - '8681:8080'
       - '8683:8081'
@@ -88,3 +106,6 @@ services:
       - ./logfile.json:/opt/moostream/logfile.json
     depends_on:
       - "moo-rist-logger"
+networks:
+  moo-net:
+    driver: bridge
