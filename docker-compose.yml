@@ -1,6 +1,6 @@
 services:
   noalbs:
-    image: moothecow/noalbs:0.0.8
+    image: moothecow/noalbs:${NOALBS_VERSION}
     container_name: noalbs
     restart: unless-stopped
     stdin_open: true
@@ -11,7 +11,7 @@ services:
       - ./config_noalbs.json:/noalbs/config.json
       - ./env_noalbs:/noalbs/.env
   srtla-live-server:
-    image: moothecow/srtla-live-server:0.0.8
+    image: moothecow/srtla-live-server:${GLOBAL_SRT_VERSION}
     container_name: srtla-live-server
     restart: unless-stopped
     stdin_open: true
@@ -22,7 +22,7 @@ services:
       - "30001:30000/udp"
       - "8283:8181/tcp"
   srtla-receiver:
-    image: moothecow/srtla-receiver:0.0.8
+    image: moothecow/srtla-receiver:${GLOBAL_SRT_VERSION}
     container_name: srtla-receiver
     restart: unless-stopped
     networks:
@@ -36,7 +36,7 @@ services:
     depends_on:
       - "srtla-live-server"
   srt-live-server:
-    image: moothecow/srt-live-server:0.0.8
+    image: moothecow/srt-live-server:${GLOBAL_SRT_VERSION}
     container_name: srt-live-server
     restart: unless-stopped
     networks:
@@ -47,7 +47,7 @@ services:
       - "30002:30000/udp"
       - "8284:8181/tcp"
   srt-bonding-receiver:
-    image: moothecow/moo-srt:0.0.8
+    image: moothecow/moo-srt:${GLOBAL_SRT_VERSION}
     container_name: srt-bonding-receiver
     restart: unless-stopped
     networks:
@@ -59,7 +59,7 @@ services:
     stdin_open: true
     command: srt-test-live "udp://:5565" "srt://:5500?groupconnect=1&groupid=1"
   srt-receiver:
-    image: moothecow/moo-srt:0.0.8
+    image: moothecow/moo-srt:${GLOBAL_SRT_VERSION}
     container_name: srt-receiver
     restart: unless-stopped
     ports:
