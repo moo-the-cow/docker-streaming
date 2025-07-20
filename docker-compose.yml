@@ -71,7 +71,7 @@ services:
       - moo-net
     command: srt-live-transmit "udp://:5000" "srt://0.0.0.0:5001?mode=listener"
     depends_on:
-      - "srtla-live-server"
+      - "srt-live-server"
   moo-rist:
     image: moothecow/moo-rist:${GLOBAL_RIST_VERSION}
     container_name: moo-rist
