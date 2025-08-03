@@ -119,7 +119,7 @@ services:
       - '2031:2031/udp'
     command: ristreceiver -i 'rist://@moo-rist:2030?aes-type=128&rtt-min=100&secret=${STREAMKEY}' -o 'rist://${OBS_IP}:12345' -r 'moo-rist-logger:5005' -p 1
   moo-rist-forwarder:
-    image: moothecow/moo-rist-forwarder:0.0.11
+    image: moothecow/moo-rist-forwarder:${GLOBAL_RIST_VERSION}
     container_name: moo-rist-forwarder
     restart: unless-stopped
     tty: true
