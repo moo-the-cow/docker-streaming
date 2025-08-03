@@ -129,8 +129,7 @@ services:
         max-size: "10m"
         max-file: "3"
     networks:
-      default:
-        ipv4_address: 172.18.0.9
+      - moo-net
     ports:
       - '5556:5556/udp'
     volumes:
