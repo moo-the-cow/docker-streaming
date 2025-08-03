@@ -7,6 +7,11 @@ services:
     networks:
       - moo-net
     tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     volumes:
       - ./config_noalbs.json:/noalbs/config.json
       - ./env_noalbs:/noalbs/.env
@@ -18,6 +23,11 @@ services:
     networks:
       - moo-net
     tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     ports: 
       - "30001:30000/udp"
       - "8283:8181/tcp"
@@ -25,6 +35,11 @@ services:
     image: moothecow/srtla-receiver:${GLOBAL_SRT_VERSION}
     container_name: srtla-receiver
     restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
       - moo-net
     ports:
@@ -43,6 +58,11 @@ services:
       - moo-net
     stdin_open: true
     tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     ports: 
       - "30002:30000/udp"
       - "8284:8181/tcp"
@@ -57,6 +77,11 @@ services:
       - "5213:5565/udp"
     tty: true
     stdin_open: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     command: srt-test-live "udp://:5565" "srt://:5500?groupconnect=1&groupid=1"
   srt-receiver:
     image: moothecow/moo-srt:${GLOBAL_SRT_VERSION}
@@ -67,6 +92,11 @@ services:
       - "5013:5001/udp"
     tty: true
     stdin_open: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
       - moo-net
     command: srt-live-transmit "udp://:5000" "srt://0.0.0.0:5001?mode=listener"
@@ -77,12 +107,36 @@ services:
     container_name: moo-rist
     restart: unless-stopped
     tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
       - moo-net
     ports:
       - '2030:2030/udp'
       - '2031:2031/udp'
-    command: ristreceiver -i 'rist://@moo-rist:2030?aes-type=128&rtt-min=100&secret=${STREAMKEY}' -o 'udp://${OBS_IP}:12345' -r 'moo-rist-logger:5005' -p 1
+    command: ristreceiver -i 'rist://@moo-rist:2030?aes-type=128&rtt-min=100&secret=${STREAMKEY}' -o 'rist://${OBS_IP}:12345' -r 'moo-rist-logger:5005' -p 1
+  moo-rist-forwarder:
+    image: moothecow/moo-rist-forwarder:0.0.11
+    container_name: moo-rist-forwarder
+    restart: unless-stopped
+    tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      default:
+        ipv4_address: 172.18.0.9
+    ports:
+      - '5556:5556/udp'
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+    command: ristsender -i 'udp://@moo-rist-forwarder:12345' -o 'rist://@moo-rist-forwarder:5556?cname=moo-rist-relay' -e 128 -s '${STREAMKEY}' -p 1
   moo-rist-logger:
     image: moothecow/moo-rist-logger:${GLOBAL_RIST_VERSION}
     container_name: moo-rist-logger
@@ -90,6 +144,11 @@ services:
     networks:
       - moo-net
     tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     volumes:
       - ./logfile.json:/opt/moostream/logfile.json
   moo-rist-stats:
@@ -97,6 +156,11 @@ services:
     container_name: moo-rist-stats
     restart: unless-stopped
     tty: true
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
       - moo-net
     ports:
