@@ -1,5 +1,5 @@
 # docker-streaming
-## RIST receiver (real/pure) focus
+## RIST (real/pure relay)
 ### no audio glitches
 Docker images related to streaming - multiarch (arm64/amd64)
 
