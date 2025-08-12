@@ -13,7 +13,7 @@ https://github.com/NOALBS/nginx-obs-automatic-low-bitrate-switching
 TLDR setup:
 
 ```
-git pull https://github.com/moo-the-cow/docker-streaming
+git clone https://github.com/moo-the-cow/docker-streaming
 #modify `.env` for the SECRET_HASH_KEY
 docker compose up -d
 ```
