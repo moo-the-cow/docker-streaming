@@ -10,7 +10,13 @@ for noalbs environment file and config check out
 https://github.com/NOALBS/nginx-obs-automatic-low-bitrate-switching
 
 ## RIST howto
-you only need to do `docker compose up -d` and before that modify `.env` for the SECRET_HASH_KEY
+TLDR setup:
+
+```
+git pull https://github.com/moo-the-cow/docker-streaming
+#modify `.env` for the SECRET_HASH_KEY
+docker compose up -d
+```
 
 see https://irlbox.com/en/rist-self-hosting-guide
 
