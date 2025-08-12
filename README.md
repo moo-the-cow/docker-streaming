@@ -1,4 +1,6 @@
 # docker-streaming
+## RIST receiver (real/pure) focus
+### no audio glitches
 Docker images related to streaming - multiarch (arm64/amd64)
 
 this would work even on an old raspberry pi 3b (tested)
