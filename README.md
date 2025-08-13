@@ -28,3 +28,5 @@ for how to use it in OBS
 I provided the FULL RIST RELAY now. check out the moo-rist-forwarder section.
 
 This way you can connect FROM your OBS to anywhere (cloud hosting)
+
+**RIST current version:** 0.0.12
