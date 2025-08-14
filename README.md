@@ -18,7 +18,14 @@ git clone https://github.com/moo-the-cow/docker-streaming
 docker compose up -d
 ```
 
-**see a good detailed documentation at** https://irlbox.com/en/rist-self-hosting-guide
+## see a good detailed documentation at
+==============================================
+
+https://irlbox.com/en/rist-self-hosting-guide
+
+==============================================
+
+
 
 for how to use it in OBS
 
