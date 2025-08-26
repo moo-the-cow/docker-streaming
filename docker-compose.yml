@@ -32,7 +32,7 @@ services:
       - "30001:30000/udp"
       - "8283:8181/tcp"
   srtla-receiver:
-    image: moothecow/srtla-receiver:${GLOBAL_SRT_VERSION}
+    image: moothecow/srtla-receiver:0.0.8
     container_name: srtla-receiver
     restart: unless-stopped
     logging:
