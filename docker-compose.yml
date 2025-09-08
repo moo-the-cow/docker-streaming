@@ -50,6 +50,25 @@ services:
       - SRT_ENDPOINT_PORT=30000
     depends_on:
       - "srtla-live-server"
+  srtla-receiver-v2:
+    image: moothecow/srtla-receiver-v2:0.0.1
+    container_name: srtla-receiver-v2
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - moo-net
+    ports:
+      - "5004:5000/udp"
+      - "5005:5001/udp"
+    environment:
+      - SRT_ENDPOINT_ADDR=srtla-live-server
+      - SRT_ENDPOINT_PORT=30001
+    depends_on:
+      - "srtla-live-server"
   srt-live-server:
     image: moothecow/srt-live-server:${GLOBAL_SRT_VERSION}
     container_name: srt-live-server
