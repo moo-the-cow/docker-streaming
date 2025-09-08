@@ -32,8 +32,9 @@ for how to use it in OBS
 **Other than that you are on your own, about your setup and networking**
 
 ## Update
-I provided the FULL RIST RELAY now. check out the moo-rist-forwarder section.
 
-This way you can connect FROM your OBS to anywhere (cloud hosting)
++ I provided the FULL RIST RELAY now. check out the moo-rist-forwarder section.
 
-**RIST current version:** 0.0.13
+  This way you can connect FROM your OBS to anywhere (cloud hosting)
+
++ Added SRTLA RECEIVER V2 (source: https://github.com/irlserver/srtla)
