@@ -136,7 +136,7 @@ services:
     ports:
       - '2030:2030/udp'
       - '2031:2031/udp'
-    command: ristreceiver -i 'rist://@moo-rist:2030?rtt-min=100' -o 'rist://moo-rist-forwarder:12345' -r 'moo-rist-logger:5005' -e 128 -s '${SECRET_HASH_KEY}' -p 1
+    command: ristreceiver -i 'rist://@moo-rist:2030?rtt-min=100${RIST_AUTHARGUMENTS}' -o 'rist://moo-rist-forwarder:12345' -r 'moo-rist-logger:5005' -e 128 -s '${SECRET_HASH_KEY}' -p 1
   moo-rist-forwarder:
     image: moothecow/moo-rist-forwarder:${GLOBAL_RIST_VERSION}
     container_name: moo-rist-forwarder
