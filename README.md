@@ -36,7 +36,7 @@ on the oncoder streamkey would be publish/live/[yourstreamkey]
 
 put "mpegts" into Input Format
 
-## optional only enable specific areas
+## optional: only enable specific areas
 they are marked with BEGIN and END
 
 if you dont want to have noalbs just delete that part
