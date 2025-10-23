@@ -14,27 +14,24 @@ TLDR setup:
 
 ```
 git clone https://github.com/moo-the-cow/docker-streaming
-#modify `.env` for the SECRET_HASH_KEY
+#modify `.env` for username and password
 docker compose up -d
 ```
 
-## see a good detailed documentation at
-==============================================
+## for how to use RIST in OBS
 
-https://irlbox.com/en/rist-self-hosting-guide
+Create a MediaSource Item and uncheck "local"
 
-==============================================
+put "rist://[RELAY_IP]:[RELAY_PORT]?cname=irlbox&aes-type=0&username=[YOUR_USERNAME]&password=[YOURPASSWORD]" into Input
 
+put "mpegts" into Input Format
 
+## for how to use SRTLA in OBS
 
-for how to use it in OBS
+Create a MediaSource Item and uncheck "local"
 
-**Other than that you are on your own, about your setup and networking**
+put "srt://[RELAY_IP]:[RELAY_PORT]?streamid=play/live/[yourstreamkey]" into Input
 
-## Update
+on the oncoder streamkey would be publish/live/[yourstreamkey]
 
-+ I provided the FULL RIST RELAY now. check out the moo-rist-forwarder section.
-
-  This way you can connect FROM your OBS to anywhere (cloud hosting)
-
-+ Added SRTLA RECEIVER V2 (source: https://github.com/irlserver/srtla)
+put "mpegts" into Input Format
