@@ -46,7 +46,7 @@ put `rist://[RELAY_IP]:[RELAY_PORT]?cname=irlbox&aes-type=256&secret=[YOUR_VERY_
 
 put `mpegts` into Input Format
 
-## Fix for OBS not refreshing the media source on stream end (static html)
+## Fix for OBS not refreshing the media source (OBS BUG please report on their github) on stream end (static html)
 
 It also shows a nice overlay showing the bitrate and rtt
 
