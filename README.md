@@ -46,6 +46,18 @@ put `rist://[RELAY_IP]:[RELAY_PORT]?cname=irlbox&aes-type=256&secret=[YOUR_VERY_
 
 put `mpegts` into Input Format
 
+## Fix for OBS not refreshing the media source on stream end (static html)
+
+It also shows a nice overlay showing the bitrate and rtt
+
+HTML Polling version
+
+https://raw.githubusercontent.com/moo-the-cow/streaming-tools/refs/heads/main/obs_RIST_media_source_refresh/index_rist_template.html
+
+Websocket version
+
+https://raw.githubusercontent.com/moo-the-cow/streaming-tools/refs/heads/main/obs_RIST_media_source_refresh/index_rist_websocket_template.html
+
 ## for how to use SRTLA in OBS
 
 Create a MediaSource Item and uncheck `local`
