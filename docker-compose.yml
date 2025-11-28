@@ -69,6 +69,9 @@ services:
       - '2030:2030/udp'
       - '2031:2031/udp'
     command: ristreceiver -i 'rist://@moo-rist:2030?rtt-min=100${RIST_AUTHARGUMENTS}' -o 'rist://moo-rist-forwarder:12345' -r 'moo-rist-stats:5005' -p 1
+    depends_on:
+      - "moo-rist-stats"
+      - "moo-rist-forwarder"
   moo-rist-forwarder:
     image: moothecow/moo-rist-forwarder:${GLOBAL_RIST_VERSION}
     container_name: moo-rist-forwarder
