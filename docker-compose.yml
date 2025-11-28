@@ -101,8 +101,6 @@ services:
       - '8683:8081'
     volumes:
       - ./logfile.json:/opt/moostream/logfile.json
-    depends_on:
-      - "moo-rist-logger"
 #RIST END
 networks:
   moo-net:
