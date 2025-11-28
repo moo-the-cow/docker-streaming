@@ -68,7 +68,7 @@ services:
     ports:
       - '2030:2030/udp'
       - '2031:2031/udp'
-    command: ristreceiver -i 'rist://@moo-rist:2030?rtt-min=100${RIST_AUTHARGUMENTS}' -o 'rist://moo-rist-forwarder:12345' -r 'moo-rist-logger:5005' -p 1
+    command: ristreceiver -i 'rist://@moo-rist:2030?rtt-min=100${RIST_AUTHARGUMENTS}' -o 'rist://moo-rist-forwarder:12345' -r 'moo-rist-stats:5005' -p 1
   moo-rist-forwarder:
     image: moothecow/moo-rist-forwarder:${GLOBAL_RIST_VERSION}
     container_name: moo-rist-forwarder
@@ -84,20 +84,6 @@ services:
     ports:
       - '5556:5556/udp'
     command: ristsender -i 'udp://@moo-rist-forwarder:12345' -o 'rist://@moo-rist-forwarder:5556?cname=moo-rist-relay${RIST_AUTHARGUMENTS_FORWARDER}' -p 1
-  moo-rist-logger:
-    image: moothecow/moo-rist-logger:${GLOBAL_RIST_VERSION}
-    container_name: moo-rist-logger
-    restart: unless-stopped
-    networks:
-      - moo-net
-    tty: true
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    volumes:
-      - ./logfile.json:/opt/moostream/logfile.json
   moo-rist-stats:
     image: moothecow/moo-rist-stats:${GLOBAL_RIST_VERSION}
     container_name: moo-rist-stats
