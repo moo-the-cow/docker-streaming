@@ -37,6 +37,9 @@ you only need encryption between OBS and the FORWARDER (NOT the RECEIVER) IF you
 **REMOTE-RELAY:**
 `[irlbox] (username,password,no-encryption,no secret) => [receiver] => [forwarder] (encryption, secret) => [OBS] (encryption, secret)`
 
+**Port Scenario:**
+`irlbox => 2030 | relay | <= 5556 OBS`
+
 ## for how to use RIST in OBS
 
 Create a MediaSource Item and uncheck "local"
