@@ -21,6 +21,7 @@ TLDR setup (OBS and Relay on same Home-Network)
 modify `.env` for username and password
 ```
 git clone https://github.com/moo-the-cow/docker-streaming
+cd docker-streaming
 docker compose up -d
 ```
 
