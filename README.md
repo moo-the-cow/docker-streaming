@@ -1,4 +1,10 @@
 # docker-streaming
+
+
+you can contact the developer on discord: https://discord.gg/khTtNJjFBY
+
+also check out the streaming board documentation on: https://irlbox.com/
+
 ## RIST (real/pure relay)
 ### no audio glitches
 Docker images related to streaming - multiarch (arm64/amd64)
