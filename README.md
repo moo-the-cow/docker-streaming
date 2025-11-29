@@ -79,3 +79,23 @@ put `mpegts` into Input Format
 they are marked with BEGIN and END
 
 if you dont want to have noalbs just delete that part
+
+
+### Faq
+How to config RIST for noalbs?
+
+code snippet (only a part)
+```
+"streamServers": [
+        {
+          "streamServer": {
+            "type": "Rist",
+            "statsUrl": "http://moo-rist-stats:8080/stats"
+          },
+          "name": "RIST",
+          "priority": 1,
+          "overrideScenes": null,
+          "dependsOn": null,
+          "enabled": true
+        }
+```
