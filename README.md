@@ -8,6 +8,16 @@ also check out the streaming board documentation on: https://irlbox.com/
 
 ## Quick Start
 
+### Requirement
+docker must be running on that machine
+
+get the project files into a folder
+```
+git clone https://github.com/moo-the-cow/docker-streaming
+cd docker-streaming
+docker compose up -d
+```
+
 ### Automated Setup (Recommended)
 
 We provide automated setup scripts for both Windows and Linux/Mac:
@@ -25,11 +35,6 @@ double click the `setup-docker-home.bat` file
 ## Manual Setup
 
 modify `.env` for username and password
-```
-git clone https://github.com/moo-the-cow/docker-streaming
-cd docker-streaming
-docker compose up -d
-```
 
 Please check out the Comments inside the .env file there is a setup for HOME-NETWORK and for REMOTE-RELAY
 
