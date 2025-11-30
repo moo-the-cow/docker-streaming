@@ -85,6 +85,9 @@ Websocket version
 https://raw.githubusercontent.com/moo-the-cow/streaming-tools/refs/heads/main/obs_RIST_media_source_refresh/index_rist_websocket_template.html
 
 
+## Troubleshooting
+After you changed your `.env` file make sure you restart docker to read those changes
+
 ---
 ## Faq
 ### How to config RIST for noalbs?
