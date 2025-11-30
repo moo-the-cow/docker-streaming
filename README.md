@@ -1,6 +1,6 @@
 # docker-streaming
 
-Docker images related to streaming - multiarch (arm64/amd64)
+Docker images related to streaming (RIST focused) - multiarch (arm64/amd64)
 
 you can contact the developer on discord: https://discord.gg/khTtNJjFBY
 
@@ -13,26 +13,15 @@ also check out the streaming board documentation on: https://irlbox.com/
 We provide automated setup scripts for both Windows and Linux/Mac:
 
 #### For HOME Network (username/password authentication only):
-# Linux/Mac
+#### Linux/Mac
 ```bash
 bash setup-docker-home.sh
 ```
 
-# Windows
+#### Windows
 double click the `setup-docker-home.bat` file
 
-## RIST (real/pure relay)
-### no audio glitches
-Docker images related to streaming - multiarch (arm64/amd64)
-
-this would work even on an old raspberry pi 3b (tested)
-
-for noalbs environment file and config check out
-
-https://github.com/NOALBS/nginx-obs-automatic-low-bitrate-switching
-
-## RIST howto
-TLDR setup (OBS and Relay on same Home-Network)
+## Manual Setup
 
 modify `.env` for username and password
 ```
@@ -45,6 +34,8 @@ Please check out the Comments inside the .env file there is a setup for HOME-NET
 
 you only need encryption between OBS and the FORWARDER (NOT the RECEIVER) IF you are using REMOTE-RELAY (for security reason)
 
+## Description
+
 **ON IRLBOX USE NO ENCRYPTION BUT USERNAME AND PASSWORD TO THE RECEIVER IN ANY SETUP**
 
 **HOME-NETWORK:**
@@ -56,7 +47,7 @@ you only need encryption between OBS and the FORWARDER (NOT the RECEIVER) IF you
 **Port Scenario:**
 `irlbox => 2030 | relay | <= 5556 OBS`
 
-## for how to use RIST in OBS
+## OBS Setup for RIST
 
 Create a MediaSource Item and uncheck "local"
 
@@ -84,24 +75,18 @@ Websocket version
 
 https://raw.githubusercontent.com/moo-the-cow/streaming-tools/refs/heads/main/obs_RIST_media_source_refresh/index_rist_websocket_template.html
 
-## for how to use SRTLA in OBS
-
-Create a MediaSource Item and uncheck `local`
-
-put `srt://[RELAY_IP]:[RELAY_PORT]?streamid=play/live/[yourstreamkey]` into Input
-
-on the oncoder streamkey would be publish/live/[yourstreamkey]
-
-put `mpegts` into Input Format
-
 ## optional: only enable specific areas
 they are marked with BEGIN and END
 
 if you dont want to have noalbs just delete that part
 
 
-### Faq
-How to config RIST for noalbs?
+## Faq
+### How to config RIST for noalbs?
+
+for dedetailed infos about the noalbs environment file and config check out
+
+https://github.com/NOALBS/nginx-obs-automatic-low-bitrate-switching
 
 code snippet (only a part)
 ```
