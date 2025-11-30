@@ -21,6 +21,7 @@ bash setup-docker-home.sh
 #### Windows
 double click the `setup-docker-home.bat` file
 
+---
 ## Manual Setup
 
 modify `.env` for username and password
@@ -34,6 +35,7 @@ Please check out the Comments inside the .env file there is a setup for HOME-NET
 
 you only need encryption between OBS and the FORWARDER (NOT the RECEIVER) IF you are using REMOTE-RELAY (for security reason)
 
+---
 ## Description
 
 **ON IRLBOX USE NO ENCRYPTION BUT USERNAME AND PASSWORD TO THE RECEIVER IN ANY SETUP**
@@ -47,6 +49,7 @@ you only need encryption between OBS and the FORWARDER (NOT the RECEIVER) IF you
 **Port Scenario:**
 `irlbox => 2030 | relay | <= 5556 OBS`
 
+---
 ## OBS Setup for RIST
 
 Create a MediaSource Item and uncheck "local"
@@ -63,6 +66,7 @@ put `rist://[RELAY_IP]:[RELAY_PORT]?cname=irlbox&aes-type=256&secret=[YOUR_VERY_
 
 put `mpegts` into Input Format
 
+---
 ## Fix for OBS not refreshing the media source (OBS BUG please report on their github) on stream end (static html)
 
 It also shows a nice overlay showing the bitrate and rtt
@@ -75,12 +79,8 @@ Websocket version
 
 https://raw.githubusercontent.com/moo-the-cow/streaming-tools/refs/heads/main/obs_RIST_media_source_refresh/index_rist_websocket_template.html
 
-## optional: only enable specific areas
-they are marked with BEGIN and END
 
-if you dont want to have noalbs just delete that part
-
-
+---
 ## Faq
 ### How to config RIST for noalbs?
 
@@ -103,3 +103,10 @@ code snippet (only a part)
           "enabled": true
         }
 ```
+
+### Do I have to use noalbs, srtla and rist?
+no each of those components can run without the other, but there are sections that must be used if you want to use RIST only
+
+They are marked with BEGIN and END
+
+If you dont want to have noalbs just delete that part
