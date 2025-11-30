@@ -49,7 +49,6 @@ cat > .env << EOL
 NOALBS_VERSION=0.0.8
 GLOBAL_SRT_VERSION=0.0.7
 GLOBAL_RIST_VERSION=0.0.14
-ENCRYPTION=128
 
 ###### OBS and Relay via Internet ######
 
