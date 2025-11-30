@@ -1,9 +1,25 @@
 # docker-streaming
 
+Docker images related to streaming - multiarch (arm64/amd64)
 
 you can contact the developer on discord: https://discord.gg/khTtNJjFBY
 
 also check out the streaming board documentation on: https://irlbox.com/
+
+## Quick Start
+
+### Automated Setup (Recommended)
+
+We provide automated setup scripts for both Windows and Linux/Mac:
+
+#### For HOME Network (username/password authentication only):
+# Linux/Mac
+```bash
+bash setup-docker-home.sh
+```
+
+# Windows
+double click the `setup-docker-home.bat` file
 
 ## RIST (real/pure relay)
 ### no audio glitches
