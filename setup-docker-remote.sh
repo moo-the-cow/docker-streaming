@@ -11,10 +11,10 @@ echo "Generating random credentials..."
 
 # Generate username with "moo-" prefix (max 22 characters total, so 18 random chars)
 chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-USERNAME="moo-"
+RIST_USERNAME="moo-"
 for i in {1..18}; do
     rand=$((RANDOM % 62))
-    USERNAME="${USERNAME}${chars:$rand:1}"
+    RIST_USERNAME="${RIST_USERNAME}${chars:$rand:1}"
 done
 
 # Generate password (30 characters, alphanumeric)
@@ -35,7 +35,7 @@ done
 echo ""
 echo "Generated Credentials:"
 echo "======================"
-echo "USERNAME: $USERNAME"
+echo "RIST_USERNAME: $RIST_USERNAME"
 echo "PASSWORD: $PASSWORD"
 echo "SECRET: $SECRET"
 echo "ENCRYPTION: 128"
@@ -52,14 +52,14 @@ GLOBAL_RIST_VERSION=0.0.14
 
 ###### OBS and Relay via Internet ######
 
-RIST_AUTHARGUMENTS="&username=${USERNAME}&password=${PASSWORD}&aes-type=128&secret=${SECRET}"
+RIST_AUTHARGUMENTS="&username=${RIST_USERNAME}&password=${PASSWORD}&aes-type=128&secret=${SECRET}"
 RIST_AUTHARGUMENTS_FORWARDER="aes-type=128&secret=${SECRET}"
 EOL
 
 echo ""
 echo "REMOTE Version Configuration Complete!"
 echo "======================================"
-echo "RIST Receiver Auth: username=$USERNAME, password=$PASSWORD + encryption"
+echo "RIST Receiver Auth: username=$RIST_USERNAME, password=$PASSWORD + encryption"
 echo "RIST Forwarder Auth: encryption only (for OBS compatibility)"
 echo "Encryption: aes-type=128"
 echo ""
