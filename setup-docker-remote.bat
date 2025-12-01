@@ -49,7 +49,7 @@ echo GLOBAL_RIST_VERSION=0.0.14 >> .env
 echo. >> .env
 echo ###### OBS and Relay via Internet ###### >> .env
 echo. >> .env
-echo RIST_AUTHARGUMENTS="&username=!USERNAME!&password=!PASSWORD!&aes-type=128&secret=!SECRET!" >> .env
+echo RIST_AUTHARGUMENTS="&username=!USERNAME!&password=!PASSWORD!" >> .env
 echo RIST_AUTHARGUMENTS_FORWARDER="aes-type=128&secret=!SECRET!" >> .env
 
 echo.
