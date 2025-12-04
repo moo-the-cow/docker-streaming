@@ -86,6 +86,10 @@ Websocket version
 
 https://raw.githubusercontent.com/moo-the-cow/streaming-tools/refs/heads/main/obs_RIST_media_source_refresh/index_rist_websocket_template.html
 
+Configuration File (shared)
+
+https://raw.githubusercontent.com/moo-the-cow/streaming-tools/refs/heads/main/obs_RIST_media_source_refresh/config.js
+
 
 ## Troubleshooting
 After you changed your `.env` file make sure you restart docker to read those changes
