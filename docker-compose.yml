@@ -86,7 +86,7 @@ services:
       - moo-net
     ports:
       - '5556:5556/udp'
-    command: ristsender -i 'udp://@moo-rist-forwarder:12345' -o 'rist://@moo-rist-forwarder:5556?cname=moo-rist-relay${RIST_AUTHARGUMENTS_FORWARDER}' -p 1
+    command: ristsender -v -1 -i 'udp://@moo-rist-forwarder:12345' -o 'rist://@moo-rist-forwarder:5556?cname=moo-rist-relay${RIST_AUTHARGUMENTS_FORWARDER}' -p 1
   moo-rist-stats:
     image: moothecow/moo-rist-stats:${GLOBAL_RIST_VERSION}
     container_name: moo-rist-stats
