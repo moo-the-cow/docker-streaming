@@ -36,7 +36,7 @@ echo Configuring .env for HOME version...
 :: Create .env with HOME configuration only (username/password, no encryption)
 echo NOALBS_VERSION=0.0.8 > .env
 echo GLOBAL_SRT_VERSION=0.0.7 >> .env
-echo GLOBAL_RIST_VERSION=0.0.14 >> .env
+echo GLOBAL_RIST_VERSION=0.0.15 >> .env
 echo. >> .env
 echo ##### Home network setup ####### >> .env
 echo. >> .env
