@@ -44,7 +44,6 @@ echo Configuring .env for REMOTE version...
 
 :: Create .env with REMOTE configuration (encryption only for OBS)
 echo NOALBS_VERSION=0.0.8 > .env
-echo GLOBAL_SRT_VERSION=0.0.7 >> .env
 echo GLOBAL_RIST_VERSION=0.0.15 >> .env
 echo. >> .env
 echo ###### OBS and Relay via Internet ###### >> .env
