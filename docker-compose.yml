@@ -15,43 +15,6 @@ services:
     volumes:
       - ./config_noalbs.json:/noalbs/config.json
       - ./env_noalbs:/noalbs/.env
-#SRTLA BEGIN
-  srtla-live-server:
-    image: moothecow/srtla-live-server:${GLOBAL_SRT_VERSION}
-    container_name: srtla-live-server
-    restart: unless-stopped
-    stdin_open: true
-    networks:
-      - moo-net
-    tty: true
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    ports: 
-      - "30001:30000/udp"
-      - "8283:8181/tcp"
-  srtla-receiver:
-    image: moothecow/srtla-receiver:0.0.8
-    container_name: srtla-receiver
-    restart: unless-stopped
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    networks:
-      - moo-net
-    ports:
-      - "5002:5000/udp"
-      - "5003:5001/udp"
-    environment:
-      - SRT_ENDPOINT_ADDR=srtla-live-server
-      - SRT_ENDPOINT_PORT=30000
-    depends_on:
-      - "srtla-live-server"
-  #SRTLA END
   #RIST BEGIN
   moo-rist:
     image: moothecow/moo-rist:${GLOBAL_RIST_VERSION}
