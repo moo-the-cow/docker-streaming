@@ -118,7 +118,7 @@ code snippet (only a part)
         }
 ```
 
-### Do I have to use noalbs, srtla and rist?
+### Do I have to use noalbs and rist?
 no each of those components can run without the other, but there are sections that must be used if you want to use RIST only
 
 They are marked with BEGIN and END
