@@ -6,6 +6,8 @@ you can contact the developer on discord: https://discord.gg/khTtNJjFBY
 
 also check out the streaming board documentation on: https://irlbox.com/
 
+IRLBOX is using RIST BONDING and an advanced adaptive bitrate algorithm on top of the RIST integrated one
+
 **related project:** [Native RIST Setup](https://github.com/moo-the-cow/moo-rist-hosting-native) 
 
 ## Quick Start
