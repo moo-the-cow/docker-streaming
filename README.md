@@ -12,6 +12,8 @@ IRLBOX is using RIST BONDING and an advanced adaptive bitrate algorithm on top o
 
 **related project:** [Native RIST Setup](https://github.com/moo-the-cow/moo-rist-hosting-native) 
 
+**Current version:** `0.0.17`
+
 ## Quick Start
 
 ### Requirement
