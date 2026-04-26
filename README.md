@@ -106,31 +106,8 @@ After you changed your `.env` file make sure you restart docker to read those ch
 
 ---
 ## Faq
-### How to config RIST for noalbs?
+### How to use RIST for Scene Switching (stats)?
 
-for dedetailed infos about the noalbs environment file and config check out
+for dedetailed infos check out
 
-https://github.com/NOALBS/nginx-obs-automatic-low-bitrate-switching
-
-code snippet (only a part)
-```
-"streamServers": [
-        {
-          "streamServer": {
-            "type": "Rist",
-            "statsUrl": "http://moo-rist-stats:8080/stats"
-          },
-          "name": "RIST",
-          "priority": 1,
-          "overrideScenes": null,
-          "dependsOn": null,
-          "enabled": true
-        }
-```
-
-### Do I have to use noalbs and rist?
-no each of those components can run without the other, but there are sections that must be used if you want to use RIST only
-
-They are marked with BEGIN and END
-
-If you dont want to have noalbs just delete that part
+https://github.com/sniffingpickles/BitrateSceneSwitch

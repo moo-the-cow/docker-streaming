@@ -1,21 +1,4 @@
 services:
-  noalbs:
-    image: moothecow/noalbs:${NOALBS_VERSION}
-    container_name: noalbs
-    restart: unless-stopped
-    stdin_open: true
-    networks:
-      - moo-net
-    tty: true
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    volumes:
-      - ./config_noalbs.json:/noalbs/config.json
-      - ./env_noalbs:/noalbs/.env
-  #RIST BEGIN
   moo-rist:
     image: moothecow/moo-rist:${GLOBAL_RIST_VERSION}
     container_name: moo-rist
@@ -65,7 +48,6 @@ services:
     ports:
       - '8681:8080'
       - '8683:8081'
-#RIST END
 networks:
   moo-net:
     driver: bridge
